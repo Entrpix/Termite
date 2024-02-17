@@ -1,0 +1,25 @@
+{
+  "name": "termite",
+  "version": "1.0.0",
+  "description": "Webporxy but Terminal",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/entrpix/Termite.git"
+  },
+  "author": "Entrpix",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/entrpix/termite/issues"
+  },
+  "homepage": "https://github.com/entrpix/termite#readme",
+  "dependencies": {
+    "@nebula-services/dynamic": "^0.7.2-patch.2",
+    "@titaniumnetwork-dev/ultraviolet": "^2.0.0",
+    "@tomphttp/bare-server-node": "^2.0.1",
+    "express": "^4.18.2"
+  }
+}
