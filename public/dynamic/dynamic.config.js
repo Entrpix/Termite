@@ -1,5 +1,5 @@
 self.__dynamic$config = {
-    prefix: '/dynamic/service/',
+    prefix: '/service/',
     encoding: 'xor',
     mode: 'production', 
     logLevel: 0, 
