@@ -7,22 +7,11 @@
     <link rel="stylesheet" href="index.css" />
     <script src="uv/uv.bundle.js" defer></script>
     <script src="uv/uv.config.js" defer></script>
-    <script src="register-sw.js" defer></script>
-    <script src="search.js" defer></script>
-    <script src="index.js" defer></script>
-    <script defer>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/uv/sw.js')
-            .then(registration => {
-              console.log('Service Worker registered with scope:', registration.scope);
-            })
-            .catch(error => {
-              console.error('Service Worker registration failed:', error);
-            });
-        });
-      }
-    </script>
+    <script src="scripts/register-sw.js" defer></script>
+    <script src="scripts/search.js" defer></script>
+    <script src="scripts/index.js" defer></script>
+    <script src="scripts/sw.js" defer></script>
+    <script src="scripts/dip.js" defer></script>
 </head>
 <body>
     <form id="form" class="flex-center">
@@ -31,11 +20,14 @@
           value="https://www.google.com/search?q=%s"
           type="hidden"
         />
-        <input id="address" type="text"/>
+        <input id="address" type="text" placeholder="uv"/>
       </form>
       <div class="desc left-margin">
         <p id="error"></p>
         <pre id="error-code"></pre>
       </div>
+      <form action="/service/route" action="" method="POST" id="uform">
+        <input title="query" name="url" autocomplete="off" placeholder="dip">
+      </form>
 </body>
 </html>
