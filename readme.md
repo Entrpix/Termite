@@ -1,4 +1,4 @@
-# Termite
+# <img src="logo.svg" alt="Logo" width="50" style="vertical-align:middle"> Termite
 Webproxy but Terminal
 
 ## Usage
@@ -21,10 +21,8 @@ register - Registers service worker (Run if errors occur)
 
 ## Credit
 - Bare Server - https://github.com/tomphttp/bare-server-node/
-
 - Ultraviolet:
     - https://github.com/titaniumnetwork-dev/Ultraviolet/
     - https://github.com/titaniumnetwork-dev/Ultraviolet-App/
     - https://github.com/titaniumnetwork-dev/Ultraviolet-Static/
-
-- Dynamic - https://github.com/nebulaservices/dynamic
+- Dynamic - https://github.com/nebulaservices/dynamic/
