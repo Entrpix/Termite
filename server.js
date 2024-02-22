@@ -17,9 +17,8 @@ app.use(express.static(publicPath));
 
 app.use((req, res) => {
   res.status(404);
-  res.send(`<h1>404 | Try Again</h1>`);
+  res.sendFile(`${publicPath}/404.html`, { root: '.' });
 });
-
 server.on("request", (req, res) => {
   if (bare.shouldRoute(req)) {
     bare.routeRequest(req, res);
