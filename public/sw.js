@@ -1,6 +1,6 @@
 importScripts("/uv/uv.bundle.js");
 importScripts("/uv/uv.config.js");
-importScripts(__uv$config.sw || "/uv/uv.sw.js");
+importScripts("/uv/uv.sw.js");
 importScripts("/dynamic/dynamic.config.js");
 importScripts("/dynamic/dynamic.worker.js");
 

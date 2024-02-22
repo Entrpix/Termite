@@ -7,7 +7,7 @@ clear - Clears the console
 version - Displays verison and info of Termite
 help - Ya just ran it :3
 site *url or query* - Visit the required site (url: URL) (query: string)
-[TODO] proxy *backend* - Sets webproxy (backend: uv or dynamic)
+proxy *backend* - Sets webproxy (backend: uv or dynamic)
 cloak *type* *value* - Cloaks the tab (types: title, favicon) (value: string or URL)
 reset - Resets tab cloaking
 ab - Open site in about:blank

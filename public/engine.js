@@ -3,21 +3,43 @@ document.addEventListener('DOMContentLoaded', function () {
     const userInput = document.getElementById('user-input');
 
     var searchEngine = localStorage.getItem('searchEngine');
-
-    var cloakTitle = localStorage.getItem('title');
-    document.title = cloakTitle;
-
-    if (!cloakTitle) {
-        localStorage.setItem('title', "Termite");
-        document.title = cloakTitle;
+    var webProxy = localStorage.getItem('webProxy');
+    var favicon = localStorage.getItem('favicon');
+    var title = localStorage.getItem('title');
+    
+    if (!title) {
+        title = "Termite";
+        localStorage.setItem('title', title);
+        document.title = title;
+    } else {
+        document.title = title;
     };
-
-    let favicon = localStorage.getItem('favicon') || `${window.location.href}/favicon.svg`;
-    let link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-    link.type = 'image/x-icon';
-    link.rel = 'shortcut icon';
-    link.href = favicon;
-    document.getElementsByTagName('head')[0].appendChild(link);
+    
+    if (!favicon) {
+        favicon = `${window.location.href}/favicon.svg`;
+        localStorage.setItem('favicon', favicon);
+        let link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+        link.type = 'image/x-icon';
+        link.rel = 'shortcut icon';
+        link.href = favicon;
+        document.getElementsByTagName('head')[0].appendChild(link);
+    } else {
+        let link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+        link.type = 'image/x-icon';
+        link.rel = 'shortcut icon';
+        link.href = favicon;
+        document.getElementsByTagName('head')[0].appendChild(link);    
+    };
+    
+    if (!searchEngine) {
+        searchEngine = "https://www.google.com/search?q=%s";
+        localStorage.setItem('searchEngine', searchEngine);
+    };
+    
+    if (!webProxy) {
+        webProxy = "uv";
+        localStorage.setItem('webProxy', webProxy);
+    };
 
     function addLine(text) {
         const line = document.createElement('div');
@@ -60,6 +82,9 @@ document.addEventListener('DOMContentLoaded', function () {
             case 'ab':
                 ab();
                 break;
+            case 'proxy':
+                proxy(commandParts.slice(1).join(' '));
+                break;
             default:
                 unknown();
         };
@@ -80,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function version() {
         addLine('Termite - Terminal Webproxy');
-        addLine('Version: v0.1.0 (Beta Release)');
+        addLine('Version: v1.0.0 (Stable)');
         addLine('License: GPL-3');
         addLine('Source Code: https://github.com/entrpix/Termite');
         addLine('Base Engine: https://github.com/entrpix/FUKK-8');
@@ -91,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
         addLine('version - Displays verison and info of Termite');
         addLine('help - Ya just ran it :3');
         addLine('site *url or query* - Visit the required site (url: URL) (query: string)');
-        addLine('[TODO] proxy *backend* - Sets webproxy (backend: uv or dynamic)');
+        addLine('proxy *backend* - Sets webproxy (backend: uv or dynamic)');
         addLine('cloak *type* *value* - Cloaks the tab (types: title, favicon) (value: string or URL)');
         addLine('reset - Resets tab cloaking');
         addLine('ab - Open site in about:blank');
@@ -128,8 +153,35 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     function url(input) {
-        const url = search(input, searchEngine);
-        location.href = __uv$config.prefix + __uv$config.encodeUrl(url);
+        if (localStorage.getItem('webProxy') === "uv") {
+            const url = search(input, searchEngine);
+
+            const iframe = document.createElement('iframe');
+            iframe.src = __uv$config.prefix + __uv$config.encodeUrl(url);;
+
+            iframe.style.position = 'fixed';
+            iframe.style.top = '0';
+            iframe.style.left = '0';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = 'none';
+
+            document.body.appendChild(iframe);   
+        } else if (localStorage.getItem('webProxy') === "dynamic") {
+            const url = search(input, searchEngine);
+
+            const iframe = document.createElement('iframe');
+            iframe.src =  __dynamic$config.prefix + "route?url=" + encodeURIComponent(url);
+
+            iframe.style.position = 'fixed';
+            iframe.style.top = '0';
+            iframe.style.left = '0';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = 'none';
+
+            document.body.appendChild(iframe);
+        };
     };
 
     function setSearchEngine(url) {
@@ -152,14 +204,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function reset() {
-        localStorage.removeItem('title');
-        localStorage.removeItem('favicon');
+        localStorage.setItem('title', 'Termite');
         document.title = "Termite";
+
+        localStorage.setItem('favicon', `${window.location.href}/favicon.svg`);
         let link = document.querySelector("link[rel*='icon']") || document.createElement('link');
         link.type = 'image/x-icon';
         link.rel = 'shortcut icon';
         link.href = `${window.location.href}/favicon.svg`;
         document.getElementsByTagName('head')[0].appendChild(link);
+
+        localStorage.setItem('searchEngine', 'https://www.google.com/search?q=%s');
+        localStorage.setItem('webProxy', 'uv');
     };
 
     if (location.pathname.startsWith(__uv$config.prefix)) {
@@ -183,5 +239,15 @@ document.addEventListener('DOMContentLoaded', function () {
         iframe.style.right = "0";
         iframe.src = url
         win.document.body.appendChild(iframe)
+    };
+
+    function proxy(type) {
+        if (type === "uv") {
+            localStorage.setItem('webProxy', "uv");
+        } else if (type === "dynamic") {
+            localStorage.setItem('webProxy', "dynamic");
+        } else {
+            addLine('Invalid proxy (Types: uv, dynamic)');
+        };
     };
 });
