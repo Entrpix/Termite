@@ -15,6 +15,14 @@ se *URL* - Sets search engine (URL: URL)
 register - Registers service worker (Run if errors occur)
 ```
 
+## Installation
+```sh
+$ git clone https://github.com/entrpix/termite
+$ cd termite
+$ npm i
+$ npm start
+```
+
 ## Contributors
 - Entrpix - Frontend, Terminal Engine
 - Riftriot - Fixing Backend
