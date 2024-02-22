@@ -1,7 +1,7 @@
 {
   "name": "termite",
   "version": "1.0.0",
-  "description": "Webporxy but Terminal",
+  "description": "Terminal Webproxy",
   "main": "server.js",
   "type": "module",
   "scripts": {
