@@ -1,0 +1,36 @@
+body {
+    background-color: rgb(0, 0, 0);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.user-input {
+    margin-top: 10px;
+    padding: 5px;
+    color: rgb(0, 255, 0);
+    background: transparent;
+    border: transparent;
+}
+
+::placeholder {
+    color: rgb(0, 255, 0);
+}
+
+#container {
+    font-family: monospace;
+    white-space: pre;
+    overflow: auto;
+    height: 1500px;
+    padding: 5px;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+.notfound {
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}

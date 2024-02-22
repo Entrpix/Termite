@@ -4,28 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Termite</title>
-    <link rel="stylesheet" href="index.css" />
+    <link rel="icon" href="favicon.svg" type="image/svg" />
+    <link rel="stylesheet" href="style.css" />
     <script src="uv/uv.bundle.js" defer></script>
     <script src="uv/uv.config.js" defer></script>
     <script src="register-sw.js" defer></script>
-    <script src="scripts/search.js" defer></script>
-    <script src="scripts/index.js" defer></script>
+    <script src="engine.js" defer></script>
+    
 </head>
 <body>
-    <form id="form" class="flex-center">
-        <input
-          id="search-engine"
-          value="https://www.google.com/search?q=%s"
-          type="hidden"
-        />
-        <input id="address" type="text" placeholder="uv"/>
-      </form>
-      <div class="desc left-margin">
-        <p id="error"></p>
-        <pre id="error-code"></pre>
-      </div>
       <form action="/service/route" action="" method="POST" id="uform">
-        <input title="query" name="url" autocomplete="off" placeholder="dip">
+        <input title="query" name="url" autocomplete="off" placeholder="dynamic">
       </form>
+
+    <input type="text" id="user-input" class="user-input" placeholder=">">
+    <div id="container"></div>
+</html>
 </body>
 </html>
