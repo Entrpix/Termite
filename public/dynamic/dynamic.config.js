@@ -8,8 +8,8 @@ self.__dynamic$config = {
       path: '/bare/',
     },
     tab: {
-      title: localStorage.getItem('title'),
-      icon: localStorage.getItem('favicon'),
+      title: null,
+      icon: null,
       ua: null,
     },
     assets: {
