@@ -24,6 +24,12 @@ $ npm start
 ```
 Deployment guide can be found [Here](deployment.md) (Requires a VPS and a Domain)
 
+## TODO
+- [ ] Add JS Injection
+- [ ] User-Agent Spoofing
+- [ ] Change Dynamic Config Path
+- [ ] Add Proxy Modes (Embed, Direct, Etc.)
+
 ## Contributors
 - Entrpix - Frontend, Terminal Engine
 - Riftriot - Fixing Backend
