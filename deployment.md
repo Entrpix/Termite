@@ -4,7 +4,7 @@ This was tested on an Ubuntu 22.04 LTS VPS
 ```sh
 $ sudo apt update
 $ sudo apt upgrade -y
-$ sudo apt install git nginx screen ufw nodejs npm curl certbot python3-certbot-nginx -y
+$ sudo apt install git nginx screen ufw nodejs npm curl certbot python3-certbot-nginx nano -y
 $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 $ source ~/.bashrc
 $ nvm install 18
@@ -75,7 +75,7 @@ $ sudo certbot --nginx -d subdomain.domain.tld -d subdomain.domain.tld
 $ screen
 $ git clone https://github.com/entrpix/termite
 $ cd termite
-$ npmi
+$ npm i
 $ npm start
 # ctrl + a + d
 $ sudo systemctl reload nginx
