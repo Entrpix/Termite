@@ -22,6 +22,7 @@ $ cd termite
 $ npm i
 $ npm start
 ```
+Deployment guide can be found [Here](deployment.md) (Requires a VPS and a Domain)
 
 ## Contributors
 - Entrpix - Frontend, Terminal Engine
