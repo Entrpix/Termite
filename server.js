@@ -12,10 +12,10 @@ const app = express();
 const publicPath = "public";
 const port = 8000;
 
+app.use(express.static(publicPath));
+
 app.use("/dynamic/", express.static(dynamicPath));
 app.use("/uv/", express.static(uvPath));
-
-app.use(express.static(publicPath));
 
 app.use((req, res) => {
   res.status(404);
