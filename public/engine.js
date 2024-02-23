@@ -154,6 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function url(input) {
         if (localStorage.getItem('webProxy') === "uv") {
+            addLine('Please wait one moment...');
             const url = search(input, searchEngine);
 
             const iframe = document.createElement('iframe');
@@ -166,8 +167,9 @@ document.addEventListener('DOMContentLoaded', function () {
             iframe.style.height = '100%';
             iframe.style.border = 'none';
 
-            document.body.appendChild(iframe);   
+            document.body.appendChild(iframe); 
         } else if (localStorage.getItem('webProxy') === "dynamic") {
+            addLine('Please wait one moment...');
             const url = search(input, searchEngine);
 
             const iframe = document.createElement('iframe');
@@ -186,12 +188,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function setSearchEngine(url) {
         localStorage.setItem('searchEngine', url);
+        addLine(`Set Search Engine to: ${url}`);
     }
 
     function cloak(Type, Value) {
         if (Type === "title") {
             localStorage.setItem('title', Value);
             document.title = Value;
+            addLine(`Set title to: ${Value}`);
         } else if (Type === "favicon") {
             let faviconUrl = `https://www.google.com/s2/favicons?domain=${Value}`;
             localStorage.setItem('favicon', faviconUrl);
@@ -200,6 +204,7 @@ document.addEventListener('DOMContentLoaded', function () {
             link.rel = 'shortcut icon';
             link.href = faviconUrl;
             document.getElementsByTagName('head')[0].appendChild(link);
+            addLine(`Set favicon to: ${Value}`);
         }
     }
 
@@ -216,6 +221,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         localStorage.setItem('searchEngine', 'https://www.google.com/search?q=%s');
         localStorage.setItem('webProxy', 'uv');
+        addLine('Reset Termite to Default Settings');
     };
 
     if (location.pathname.startsWith(__uv$config.prefix)) {
@@ -237,15 +243,17 @@ document.addEventListener('DOMContentLoaded', function () {
         iframe.style.bottom = "0";
         iframe.style.left = "0";
         iframe.style.right = "0";
-        iframe.src = url
+        iframe.src = url;
         win.document.body.appendChild(iframe)
     };
 
     function proxy(type) {
         if (type === "uv") {
             localStorage.setItem('webProxy', "uv");
+            addLine('Set Webproxy to Ultraviolet (uv)');
         } else if (type === "dynamic") {
             localStorage.setItem('webProxy', "dynamic");
+            addLine('Set Webproxy to Dynamic');
         } else {
             addLine('Invalid proxy (Types: uv, dynamic)');
         };
