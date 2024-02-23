@@ -29,6 +29,10 @@ Deployment guide can be found [Here](deployment.md) (Requires a VPS and a Domain
 - [ ] User-Agent Spoofing
 - [ ] Change Dynamic Config Path
 - [ ] Add Proxy Modes (Embed, Direct, Etc.)
+- [ ] Custom Bare Server
+- [ ] Blob: Cloaker
+- [ ] Custom Themes
+- [ ] Custom Commands (aliases)
 
 ## Contributors
 - Entrpix - Frontend, Terminal Engine
