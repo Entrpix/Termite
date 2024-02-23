@@ -38,8 +38,6 @@ server.on("upgrade", (req, socket, head) => {
 });
 
 server.on("listening", () => {
-  const address = server.address();
-
   console.log(`Listening on Port: ${port}`);
 });
 
